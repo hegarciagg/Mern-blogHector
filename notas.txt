@@ -1,0 +1,53 @@
+Preparacion de escritorios para el proyecto:
+
+$npm create vite@latest
+- Nombre del proyecto escojo client o el ue quiera
+- Escojo react
+? Select a variant: » - Use arrow-keys. Return to submit.
+    TypeScript
+    TypeScript + SWC
+    JavaScript
+>   JavaScript + SWC
+    Remix
+
+- escojo JavaScript + SWC
+ y aqui me graba todos los alcribos base
+ -me voy a la carpeta delmproyecto y $cd client y despues de esto instalo los paquetes que estan el json 
+ $npm install
+
+Instalacion de tailwind
+
+- Busco en google taIlwind css para instalarlo en el proyecto  o https://tailwindcss.com/docs/guides/vite
+   $npm install -D tailwindcss postcss autoprefixer
+   $npx tailwindcss init -p
+- reemplazo el contenido de taIlwind.config.js por este:
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+
+-Reemplazo el contenido de src/index.css por este:
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+-Borro archivos innecesarios como src/app.css, public/vite.svg, src/assets/react.svg
+- En index html borro la linea     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+-en src/assets/app.jsx  y lo reemplazo por esto 
+  export default function App() {
+    return <div>App</div>;
+  }
+- verifico que tenga esta extencion en visual studio:  ES7+ React/Redux/React-Native snippets, Tailwind CSS IntelliSense
+
+$npm run dev
+-
+
+
