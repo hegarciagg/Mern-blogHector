@@ -48,6 +48,45 @@ export default {
 - verifico que tenga esta extencion en visual studio:  ES7+ React/Redux/React-Native snippets, Tailwind CSS IntelliSense
 
 $npm run dev
--
 
+Github 
+- $cd ..
+- git init
+- git add . 
+-commit -m 'escribo en que voy' 
+-voy a mi cuenta de github y creo un repositorio para el proyecto. 
+-en mi terminal escribo algo como esto: 
+
+ $git remote add origin https://github.com/hegarciagg/Mern-blogHector.git
+ $git branch -M main
+ $git push -u origin main
+
+CREAR PAGINAS Y RUTAS
+- en la carpeta src, creo las paginas de mi aplicacion, Home, Dashbord, Home, Singni, SignUp, y dentro de cada pagina escribo algo como esto para iniciar cada pagina:
+ export default function Home() {
+  return <div>Home</div>;
+}
+ó
+export default function Dashboard() {
+  return <div>Dashboard</div>;
+}
+
+- instalo react-router-dom asi:  
+   $ npm i react-router-dom
+- En src/App.jsx coloco cada una de las rutas de las paginas ue tengo en src/pages de la siguiente manera: 
+    import { BrowserRouter, Routes, Route } from "react-router-dom"
+    import Home from './pages/Home'
+    import About from './pages/About'
+     ###demas paginas segun donde esten
+    export default function App() {
+      return (
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+          #demas rutas
+          </Routes>
+        </BrowserRouter>
+      );
+    }
 
