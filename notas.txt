@@ -145,6 +145,40 @@ Los archivos para subir me han aumentado, debo arrastrar el archivo .gitignore f
 
 despues de hacerlo, lo cómmito 
 
+/************************/
+CONECTARSE A MONGODB
+/***********************/
+
+- Instaló el paquete mongoose, pilas debo estar en la carpeta de afuera donde esta mi package.json principal.
+- npm i mongoose
+- en index.js adicciono la linea mongodb://localhost:27017
+usuario hegarciagg password: kuUTTJw94M1rDEwq
+
+mongodb+srv://hegarciagg:kuUTTJw94M1rDEwq@cluster0.z47duyi.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+
+-coloco en api/index.js, estas lineas para conectarme:
+import mongoose from "mongoose";
+
+mongoose
+  .connect(
+    "mongodb+srv://hegarciagg:kuUTTJw94M1rDEwq@cluster0.z47duyi.mongodb.net/MERN-BLOGHECTOR?retryWrites=true&w=majority&appName=Cluster0"
+  )
+  .then(() => {
+    console.log("Mongodb is connected");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+- Debo crear la base de datos en mongodb, aplicada a un cluster y ue sea en mi caso de forma gratuita, tambien lo puedo hacer de manera local.
+
+- CREACION DE ARCHIVOS DE ENTORNO 
+
+- Creo los archivos de entorno, creo un archvo ue se llame  .env en la carpeta pricipal. y en este archivo coloco las variables globales, para mi caso:
+MONGO=MONGO='mongodb+srv://hegarciagg:kuUTTJw94M1rDEwq@cluster0.z47duyi.mongodb.net/MERN-BLOGHECTOR?retryWrites=true&w=majority&appName=Cluster0'
+- Ya para conectarme a la base lo hago mediante  la cadena mongoose.connect(process.env.MONGO). las otras cosas, antes debo instalar el paquete 
+$ npm install dotenv , lo import en index.js asi import dotenv from 'dotenv' , dotenv.config();
+-en el archivo .gitignore adiciono .env 
 
 
 
