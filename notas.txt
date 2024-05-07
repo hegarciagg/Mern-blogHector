@@ -89,4 +89,31 @@ export default function Dashboard() {
         </BrowserRouter>
       );
     }
+-Verifico cada uno de las paginas creadas y realizo el commit usando visual studio enla parte derecha le doy clic a  3er icono coo se fuera una red, le doy + a cada cambio y despues comito y envio, verifico en mi repositorio los cambios.
+
+CREAR HEADER COMPONENTS 
+
+- El header es la parte que esta en todas las páginas, para este punto creo una nueva carpeta que se llame components y un archivo header.jsx en el header debemos diseñar el logo, el link a cada una de las paginas, por ahora el archivo debe tener esto
+      export default function header() {
+  return <div>header</div>;
+      } 
+- y en app.jsx lo pongo fuera de <Routes> y el path donde estan las otras paginas algo asi como: import Header from "./components/Header";
+
+- Hay varios tonos y estilos para botones y fondos del header, una de las paginas mas usadas en react es https://flowbite-react.com/ 
+
+-Instalo npm i flowbite-react en consola, debo estar en la carpeta de client 
+-en el archivo tailwind.config.js adiciono la parte 'node_modules/flowbite-react/**/*.{js,jsx,tsx}',
+  queda la parte asi: 
+    content: [
+      "./index.html",
+      "./src/**/*.{js,ts,jsx,tsx}",
+      "node_modules/flowbite-react/**/*.{js,jsx,tsx}",
+      ],
+
+- cambio esta parte plugins: [require("flowbite/plugin")],
+-crtl c y reinicio el servidor $npm run dev 
+-viene la parte de configurar el diseño del header, segun se haya estipulado,
+-instalo un componente de iconos para adecuar el header $npm install react-icons 
+-
+
 
