@@ -114,6 +114,39 @@ CREAR HEADER COMPONENTS
 -crtl c y reinicio el servidor $npm run dev 
 -viene la parte de configurar el diseño del header, segun se haya estipulado,
 -instalo un componente de iconos para adecuar el header $npm install react-icons 
--
+
+-Revisar como uedo creado el header, debe uedar segun las especificaciones
+/*********************/
+CREACION DEL SERVIDOR
+/**************************/
+
+-Me ubico fuera de la carpeta de cliente, cd .., carpeta principal donde tengo el proyecto, creo otro packetjason 
+-$npm init -y 
+-creo un carpeta de backend, la puedo llamar API, dentro un archivo que se llame index.js
+-instalo express, pilas en la carpeta principal. 
+-npm install express
+- en el archivo api/index.js configuro esta parte: 
+
+import express from "express";
+const app = express();
+
+app.listen(3000, () => {
+  console.log("server listening on port 3000");
+});
+
+-En el archivo del package.json debajo de descripcion adiciono la linea "type":"module",
+-Levanto el servidor con: $node api/index.js
+-Adiciono nodemon para no estar reiniciando el servidor: $npm i nodemon , verifico que este instalado en el packaje json
+-en el package.json adiciono "dev": "nodemon api/index.js" que es la linea donde esta mi servidor y el que quiero que se levante. pilas borro esta linea: "test": "echo \"Error: no test specified\" && exit 1"
+-Tambien adiciono la linea "start": "node api/index.js" debajo de la anterior
+-ahora corro el servidor con $npm run dev
+
+Los archivos para subir me han aumentado, debo arrastrar el archivo .gitignore fuera de la carpeta. que quede en la carpeta principal.
+
+despues de hacerlo, lo cómmito 
+
+
+
+
 
 
