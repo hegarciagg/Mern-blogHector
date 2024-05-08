@@ -248,6 +248,100 @@ export default router;
   res.json({ message: "API is working" });
 };
 
+/**********************************************/
+CREAR A SIGNUP API ROUTE 
+/********************************************************/
+-instalamos el software insomnia (pass: g31h8ac10387231) para enviar mensajes (post) en json y probar que el frontend lo recibe y estos datos son enviados al backend y se registran en la base de datos.
+-en insomnia creo un mensaje json enviado a la direccion http://localhost:3000/api/auth/signup  (POST) de esta forma:
+{
+	"username" : "usuario1",
+	"email":"user1@gmail.com",
+	"password": "1234"
+}
+
+- recordemos que el start en package.jason es el archivo api\index.js, que es el archivo principal donde esta la conexion a la base de datos,  el modelo de la base de datos está en api\models\user.model.js que tiene unos campos que he especificado como unicos.tengo un archivo donde esta la logica de las funciones (controllers) api\controllers\auth.controller.js y otra parte donde tengo la ruta api\routes\auth.route.js, y ademas estoy corriendo dos procesos, uno que me abre la pagina web o frontend (http://localhost:5173/) donde lance el comando npm run deb dentro de la carpeta client \blogHector\client y otra que esta el backend donde esta toda la logica para conectarme a la base de datos (\blogHector).
+
+- en index.js poder algo como esto:
+import authRoutes from "./routes/auth.route.js";
+app.use("/api/auth", authRoutes);
+-en auth.route.js
+
+import express from "express";
+import { signup } from "../controllers/auth.controller.js";
+router.post("/signup", signup);
+export default router;
+
+
+- En auth.controler.js
+import User from "../models/user.model.js";
+
+export const signup = async (req, res) => {
+  const { username, email, password } = req.body;
+
+  if (
+    !username ||
+    !email ||
+    !password ||
+    username === "" ||
+    email === "" ||
+    password === ""
+  ) {
+    return res.status(400).json({ message: "All fields are reuiered" });
+  }
+  const newUser = new User({
+    username,
+    email,
+    password,
+  });
+
+  try {
+    await newUser.save();
+    res.json("SignUp successful");
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+      ------------------------
+      - Encriptar los passwort 
+      ------------------------
+- Instalo bcryptJs en el backend, fuera de del cliente  npm i bcryptjs   
+- lo llamo en auth.controller.js  --> import bcryptjs from "bcryptjs";
+- El authcontrollers quedara algo asi: 
+import User from "../models/user.model.js";
+import bcryptjs from "bcryptjs";
+
+export const signup = async (req, res) => {
+  const { username, email, password } = req.body;
+
+  if (
+    !username ||
+    !email ||
+    !password ||
+    username === "" ||
+    email === "" ||
+    password === ""
+  ) {
+    return res.status(400).json({ message: "All fields are reuiered" });
+  }
+
+  const hashedPassword = bcryptjs.hashSync(password, 10);
+
+  const newUser = new User({
+    username,
+    email,
+    password: hashedPassword,
+  });
+
+  try {
+    await newUser.save();
+    res.json("SignUp successful");
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+
+
 
 
 
