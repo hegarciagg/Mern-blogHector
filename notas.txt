@@ -181,6 +181,73 @@ $ npm install dotenv , lo import en index.js asi import dotenv from 'dotenv' , d
 -en el archivo .gitignore adiciono .env 
 
 
+CREACION DE MODELO DE USUARIO 
+
+-Creo una carpeta que se llame modelo de usuario y en esta carpeta introduzco por ejemplo el modelo  de la coleccion del usuario, la llamo user.models.js, la colexxion tiene esta forma:
+
+import mongoose from "mongoose";
+
+const userSchema = new mongoose.Schema(
+  {
+    username: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
+  },
+  { timestamps: true }
+);
+
+const User = mongoose.model("user", userSchema);
+
+export default User;
+
+
+/******************************/
+TESTING API ROUTE TESTING
+/*****************************/
+
+-El servidor lo levante en el puerto 3000, para probar que esta operativo lo que hago es en la pagina de index.js adiciono la siguiente linea, despues debo verificar en el browser que me responde http://localhost:3000/test
+Parte que va en el api/index.js
+
+app.get("/test", (req, res) => {
+  res.json({ message: "respondiendo desde la api" });
+});
+
+-La mejor practica es crear un archivo por cada seccion, por usuarios, folder, etcen api creo un folder llamado routes, un archivo en esta carpeta para usuarios por ejemplo llamado user.route.js: con esrta estructura:
+
+import express from "express";
+const router = express.Router();
+router.get("/test", (req, res) => {
+  res.json({ message: "respondiendo desde la api" });
+});
+export default router;
+
+- listo, ahora importo esta funcion en index.js con la linea import userRoutes from "./routes/user.route.js", como index esta en la misma carpeta de routes puedo subir un nivel y mejor poner: import userRoute from './routes/user.route.js'
+- coloco app.use("/api/user", userRoutes); notar que antes tenia la opcion con get, lo cambioa use
+- ahora al probar en la pagina web con : http://localhost:3000/api/user me dice que Cannot GET /api/user, debo usar  http://localhost:3000/api/user/test 
+- La mejor es crear una carpeta que se llame controladores y alli colocar toda la parte lógica, esta carpeta nueva va dentro de api.
+-en user.route.js puedo tener algo como esto: 
+
+import express from "express";
+import { test } from "../controllers/user.controller";
+const router = express.Router();
+router.get("/test", test);
+export default router;
+ - en user.controller.js puedo tener algo como esto:
+ export const test = (req, res) => {
+  res.json({ message: "API is working" });
+};
+
 
 
 
