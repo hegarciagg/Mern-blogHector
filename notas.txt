@@ -341,8 +341,10 @@ export const signup = async (req, res) => {
 };
 
 
+/**********************************************/
+Adiccionar un middleware y una funcion para manejar los errores
 
-
-
+/**********************************************/
+- creo otro folder llamado utils, con un archivo llamado error.js
 
 
