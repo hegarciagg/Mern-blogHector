@@ -346,5 +346,59 @@ Adiccionar un middleware y una funcion para manejar los errores
 
 /**********************************************/
 - creo otro folder llamado utils, con un archivo llamado error.js
+- creo una funcion para crear los errores en en este archivo
+
+export const errorHandler = (statusCode, message) => {
+  const error = new Error();
+  error.statusCode = statusCode;
+  error.message = message;
+  return error;
+};
+-En auth.controller llamo la funcion la funcion:
+
+import { errorHandler } from "../utils/error.js";
+-la utilizo de esta manera:
+
+export const signup = async (req, res, next) => {
+  const { username, email, password } = req.body;
+
+  if (
+    !username ||
+    !email ||
+    !password ||
+    username === "" ||
+    email === "" ||
+    password === ""
+  ) {
+    next(errorHandler(400, "All fields are required"));
+  }
+
+  const hashedPassword = bcryptjs.hashSync(password, 10);
+
+  const newUser = new User({
+    username,
+    email,
+    password: hashedPassword,
+  });
+
+  try {
+    await newUser.save();
+    res.json("SignUp successful");
+  } catch (error) {
+    next(error);
+  }
+};
+
+- en insomnia hago pruebas para enviar información por ejemplo textos en formato json como estos, que me debe mostrar que hay un error y la aplicacion no se crashea:
+
+{
+	"username" : "usuario62",
+		}
+
+/************************************************/
+/*****cracion de pagina de sign UI  ************/
+/**********************************************/
+
+
 
 
