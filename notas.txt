@@ -399,6 +399,68 @@ export const signup = async (req, res, next) => {
 /*****cracion de pagina de sign UI  ************/
 /**********************************************/
 
+-En este punto es solo utilizar html para crear la pagina, es muy util la aplicacion de tailwind, generalmente se crea y formulario  y un diseño muy creativo, el formulario tiene el tipico boton submit para enviar la información.
+
+/*********************************/
+Adicionar funcionalidad a la pagina sign up
+
+/***************************************/
+
+adiciono onChange={handleChange} en cada uno de los campos de recoleccion de datos del formulario, queda asi: 
+
+<TextInput
+                type="text"
+                placeholder="Username"
+                id="username"
+                onChange={handleChange}
+              />
+
+
+- creo una funcion que va antes del return: 
+const handleChange = (e) => {
+    console.log(e.target.value);
+  };
+- la pruebo en inspect de, click derecho, escribo sobre en cada una de las cajas y en el dom debe ver que se recoja la informaición.
+-requiero cambiar el archivo de client/vite.config.js para que a futuro pueda usar una direccion diferente a la actualmente tengo en localhost, entonces realizo este cambio asi:
+
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react-swc";
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  server: {
+    proxy: {
+      "/ api": {
+        target: "http://localhost:3000",
+        secure: false,
+      },
+    },
+  },
+  plugins: [react()],
+});
+
+-Antes de return cambio esta parte para verificar si veo cambios 
+import { useState } from "react";
+
+export default function SignUp() {
+  const [formData, setFormData] = useState({});
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+  console.log(formData);
+
+- Me voy a la pagina, le doy en inspect (click derecho), relleno los cambios a ver si me arroja datos en consola
+-Me debe aparecer en consola un objeto como el siguiente: 
+{
+    "username": "hector",
+    "email": "dkldlld@djkdjkd.com",
+    "password": "dodooddodo"
+}
+
+-Ahora necesito obtener los datos de formulario cuando presione el boton submit 
+- en el form adiciono el form className="flex flex-col gap-4 " onSubmit={handleSummit}, 
+- creo la funcion handleSummit, previniendo que se refresque evenpreventdefault, 
 
 
 
