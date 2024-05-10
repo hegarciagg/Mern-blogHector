@@ -462,5 +462,10 @@ export default function SignUp() {
 - en el form adiciono el form className="flex flex-col gap-4 " onSubmit={handleSummit}, 
 - creo la funcion handleSummit, previniendo que se refresque evenpreventdefault, 
 
+/***********************************/
+/*Creacion de la pagina de Footer  */
+/************************************/
 
-
+-En la carpeta de Component creo la pagina de Footer (rfc), Footer.jsx
+-en pages/App.jsx adiciono el componente <Footer> a lo ultimo entre </Routes> Y <BrowserRouter>
+-Tambien importo la pagina con: import Footer from "./components/Footer";
