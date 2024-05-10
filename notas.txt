@@ -479,5 +479,17 @@ export default function SignUp() {
 -y en auth.controller.js creo la funcion 
 -Aqui hago una verificacion del usuario en la base de datos y el email, tambien debo instalar un paquete para manejar un token, este es jsonwebtoken , este paquete lo instalo en el global fuera de la carpeta cliente, es decir en backend: npm install jsonwebtoken .
 -En auth.controller adiciono,  import jwt from "jsonwebtoken";
--en auth.controller creo el codigo para el token.
+-en auth.controller creo el codigo para el token. generalmente este codigo no cambia, hay uno de los parametros que es JWT_SECRET, debo crear la clave de este parametro en el archivo .env 
+- utilizo insomnia para realizar pruebas, lo configuro como post, envio mensajes hacia la direccion: http://localhost:3000/api/auth/signin, de datos como estos:
+
+{
+  "email": "prueba01@gmail.com",
+  "password": "prueba"
+ }
+
+ - verico cambiando el password, el usuario y los sorrectos.
+
+ /********************************************/
+ Completar la funcionalidad de signing pages
+ /********************************************/
 
