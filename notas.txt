@@ -469,3 +469,15 @@ export default function SignUp() {
 -En la carpeta de Component creo la pagina de Footer (rfc), Footer.jsx
 -en pages/App.jsx adiciono el componente <Footer> a lo ultimo entre </Routes> Y <BrowserRouter>
 -Tambien importo la pagina con: import Footer from "./components/Footer";
+
+/**************************/
+/****Crear signin Api route*/ 
+/**************************/
+
+-Se debe verificar que exista el login y el password y si existe con este valor, da la entrada a la pagina
+-llamo la funcion en:  router.post("/signin", signin);  import { signin } from "../controllers/auth.controller.js"; en auth.route
+-y en auth.controller.js creo la funcion 
+-Aqui hago una verificacion del usuario en la base de datos y el email, tambien debo instalar un paquete para manejar un token, este es jsonwebtoken , este paquete lo instalo en el global fuera de la carpeta cliente, es decir en backend: npm install jsonwebtoken .
+-En auth.controller adiciono,  import jwt from "jsonwebtoken";
+-en auth.controller creo el codigo para el token.
+
