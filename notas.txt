@@ -528,3 +528,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 );
 
 - creo una carpeta con este archivo client\src\redux\user\userSlice.js , 
+
+/********************************/
+instlacion de redux persist 
+/***********************************/
+
+-Lo realizo en la carpeta de cliente
