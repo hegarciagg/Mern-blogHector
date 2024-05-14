@@ -1,3 +1,7 @@
+https://github.com/sahandghavidel/mern-blog/blob/main/client/package.json
+https://www.youtube.com/watch?v=Kkht2mwSL_I&list=PLIyBRB9dIsbqI0fG60JLFrMgewzBSA1Pt&index=4
+
+
 Preparacion de escritorios para el proyecto:
 
 $npm create vite@latest
@@ -532,5 +536,91 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 /********************************/
 instlacion de redux persist 
 /***********************************/
+Redux Persist es una biblioteca para Redux que proporciona persistencia de estado en aplicaciones React/Redux. En resumen, permite que el estado de tu aplicación Redux se mantenga incluso después de que la página se recargue o se cierre la aplicación y se vuelva a abrir. Esto es útil para mantener el estado de la aplicación, como sesiones de usuario, preferencias del usuario o cualquier otro tipo de datos que desees conservar entre sesiones.
+-Lo realizo en la carpeta de cliente $npm install redux-persist
+- los cambios los realizo en main.jsx, store.jsx, 
 
--Lo realizo en la carpeta de cliente
+Cambios en client/src/store.jsx:
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import userReducer from "./user/userSlice";
+import { persistReducer, persistStore } from "redux-persist";
+import storage from "redux-persist/lib/storage";
+
+const rootReducer = combineReducers({
+  user: userReducer,
+});
+
+const persistConfig = {
+  key: "root",
+  storage,
+  version: 1,
+};
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+export const store = configureStore({
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({ serializableCheck: false }),
+});
+
+export const persistor = persistStore(store);
+
+cambios que debo hacer en \blogHector\client\src\main.jsx:
+
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+import "./index.css";
+import { store, persistor } from "./redux/store.js";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <PersistGate persistor={persistor}>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </PersistGate>
+);
+
+- refresacando la pantalla del navegador se debe almacenar la informacion del usuario.
+
+/***********************************/
+GOOGLE OAuth funcionalidad
+/************************************/
+
+-Creo una nuenaca pagina llamada client\src\components\OAuth.jsx
+-y adiciono en la pagina de Singnin.jsx y Signup la opcion <OAuth/> despues dle boton de signinIn o SignunUp 
+-debo habilitar la opcion para utilizar la autentificacion esto lo hago en firebase,  e n www.console.firebase.google.com 
+voy a consola, en este sitio me voy a crear un nuevo proyecto, deshabilito google analitics para este proyecto.
+- Creo proyecto
+-escojo proyect para web, le coloco el nombre del proyecto, regisrtar app 
+-Me voy a la carpeta de client y alli instalo $npm install firebase
+-creo este archivo /client/src/firebase.js
+-pego el codigo que me da google, que es algo como esto:
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyA456g-e34Du-zIJCx0fmF2Ya_fdTzG-NE",
+  authDomain: "mern-bloghector.firebaseapp.com",
+  projectId: "mern-bloghector",
+  storageBucket: "mern-bloghector.appspot.com",
+  messagingSenderId: "916859799451",
+  appId: "1:916859799451:web:61fcfff0a5b18044d3033e"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+-pero oculto la apikey, creo un archivo .env en client (nota este es diferente al que ya tenia ene global)
+-  Adiciono una linea como esta: VITE_FIREBASE_API="AIzaSyA456g-e34Du-zIJCx0fmF2Ya_fdTzG-NE"
+
+
+
+
