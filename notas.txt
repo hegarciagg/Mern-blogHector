@@ -621,6 +621,11 @@ const app = initializeApp(firebaseConfig);
 -pero oculto la apikey, creo un archivo .env en client (nota este es diferente al que ya tenia ene global)
 -  Adiciono una linea como esta: VITE_FIREBASE_API="AIzaSyA456g-e34Du-zIJCx0fmF2Ya_fdTzG-NE"
 
+-en este punto se deben hacer cambios en firebase.js OAuth.js auth.route.js auth.controller.js usermodel.js 
 
+
+/*************************************************************/
+Actualizar el header component con los usuarios del usuario
+/*************************************************************/
 
 
