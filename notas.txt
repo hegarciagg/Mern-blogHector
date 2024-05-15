@@ -628,4 +628,40 @@ const app = initializeApp(firebaseConfig);
 Actualizar el header component con los usuarios del usuario
 /*************************************************************/
 
+-El trabajo se realiza sobre el icono de la foto, lado superior derecho, despues del famoon y antes de toggle trabajamos sobre el archivo del header, en este punto le ponemos el usuario,correo, y la opcion de entrar al Dashboard o salir de la aplicacion:
+
+        {currentUser ? (
+          <Dropdown
+            arrowIcon={false}
+            inline
+            label={
+              <Avatar alt="user" img={currentUser.profilePicture} rounded />
+            }
+          >
+            <Dropdown.Header>
+              <span className="block text-sm">@{currentUser.username}</span>
+              <span className="block text-sm font-medium truncate">
+                {currentUser.email}
+              </span>
+            </Dropdown.Header>
+            <Link to="/dashboard?tab=profile">
+              <Dropdown.Item>Profile</Dropdown.Item>
+            </Link>
+            <Dropdown.Divider />
+            <Dropdown.Item>Sign out</Dropdown.Item>
+          </Dropdown>
+        ) : (
+          <Link to="/sign-in">
+            <Button gradientDuoTone="purpleToBlue" outline>
+              Sign In
+            </Button>
+          </Link>
+        )}
+
+/*********************************/
+Funcionalidad DARK MODE
+/*********************************/
+
+-creo una carpeta como y un archivo con estos nombres client\src\redux\theme\themeSlice.js
+-en este caso se modificaron los archivos store.js main.jsx, themeProvider.js, header
 
