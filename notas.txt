@@ -665,3 +665,20 @@ Funcionalidad DARK MODE
 -creo una carpeta como y un archivo con estos nombres client\src\redux\theme\themeSlice.js
 -en este caso se modificaron los archivos store.js main.jsx, themeProvider.js, header
 
+/**********************************/
+Hacer el dashboard privado
+/***********************************/
+
+- La idea es revisar ue la pagina del dashboard sea privada 
+-Creo la pagina client\src\components\PrivateRoute.jsx con refce
+-Adiciono la ruta en client/src/app.jsx , <Route element={<PrivateRoute />} />, import PrivateRoute from "./components/PrivateRoute";
+- el archivo client\src\components\PrivateRoute.jsx tiene esto
+
+import { useSelector } from "react-redux";
+import { Outlet, Navigate } from "react-router-dom";
+
+export default function PrivateRoute() {
+  const { currentUser } = useSelector((state) => state.user);
+  return currentUser ? <Outlet /> : <Navigate to="/signin" />;
+}
+
