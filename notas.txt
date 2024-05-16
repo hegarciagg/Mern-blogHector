@@ -682,3 +682,14 @@ export default function PrivateRoute() {
   return currentUser ? <Outlet /> : <Navigate to="/signin" />;
 }
 
+/********************************************/
+Completar la pagina de sidebar en el dashboard 
+/**********************************************/
+
+- La para esta seccion completamos la paginas Dashboard.js, DashProfile y Dashboard.js, la idea es que cada usuario tenga un dashboard diferente.
+
+/********************************************/
+Completar la pagina profile UI 
+/***************************************/
+
+
