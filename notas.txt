@@ -697,3 +697,5 @@ Completar la pagina profile UI
 /****************************************/
 editar api route del usuario
 /********************************************/
+-En esta parte trabajamos en user.conmtroller index.js user.route y creamos un nuevo archivo verifyUser para poder verificar el uso inapropiado en la creacion de usuarios., se programa que sean mas de 6 caracteres que no tengan espacios etc, las prueba se realizan con imsomnia.
+-
