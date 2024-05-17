@@ -1,7 +1,7 @@
 import { Sidebar } from "flowbite-react";
 import { HiUser, HiArrowSmRight } from "react-icons/hi";
 import { useEffect, useState } from "react";
-import { useLocation, Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function DashSidebar() {
   const location = useLocation();
@@ -13,7 +13,6 @@ export default function DashSidebar() {
       setTab(tabFromUrl);
     }
   }, [location.search]);
-
   return (
     <Sidebar className="w-full md:w-56">
       <Sidebar.Items>
@@ -23,16 +22,13 @@ export default function DashSidebar() {
               active={tab === "profile"}
               icon={HiUser}
               label={"User"}
-              Labelcolor="dark"
+              labelColor="dark"
+              as="div"
             >
               Profile
             </Sidebar.Item>
           </Link>
-          <Sidebar.Item
-            className="cursor-pointer"
-            icon={HiArrowSmRight}
-            label={"User"}
-          >
+          <Sidebar.Item icon={HiArrowSmRight} className="cursor-pointer">
             Sign Out
           </Sidebar.Item>
         </Sidebar.ItemGroup>
