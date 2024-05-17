@@ -692,4 +692,8 @@ Completar la pagina de sidebar en el dashboard
 Completar la pagina profile UI 
 /***************************************/
 
+-Esta es una de las partes mas importates porque utilizamos el recurso de google firebase, en esta aplicacion debemos limitar el uso de de la subida d elos archivos a 2 MB y trabajamos en los archivos de dashSidebasr y DashProfile, tambien bajamos otra libreria de react que sirve par mortrr cuando se sube un archivo en porcentajes 
 
+/****************************************/
+editar api route del usuario
+/********************************************/
