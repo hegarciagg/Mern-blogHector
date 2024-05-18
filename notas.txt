@@ -731,3 +731,10 @@ __v
 
 -Tengo que modificar los cookies en auth.controller
 
+
+/**************************************/
+crear un post api route
+/***************************************/
+-creo los archvos post.route, post.controller y el modelo de la base de datos y realizo prueba con ese modelo.
+
+
