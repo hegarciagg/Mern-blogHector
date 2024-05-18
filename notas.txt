@@ -698,4 +698,36 @@ Completar la pagina profile UI
 editar api route del usuario
 /********************************************/
 -En esta parte trabajamos en user.conmtroller index.js user.route y creamos un nuevo archivo verifyUser para poder verificar el uso inapropiado en la creacion de usuarios., se programa que sean mas de 6 caracteres que no tengan espacios etc, las prueba se realizan con imsomnia.
--
+
+/**********************************/
+OPCION DE SignUp
+/************************************/
+
+/*********************************/
+ADICIONAR LA FUNCIONALIDAD DE ADMINISTRADOR 
+/***********************************/
+
+- me conecto a mongodb y de manera manual cambio a uno de los usuarios como administrador (isAdmin
+true), el usuario debera quedar asi:
+
+_id
+6648af37528592d2a6760b29
+username
+"hectorgarcia4533"
+email
+"criptohgg@gmail.com"
+password
+"$2a$10$07J0N9yOJUGEGqAUgQD0IuKQFI74FMzsZybtIR0Y.79v91sm6baS."
+profilePicture
+"https://lh3.googleusercontent.com/a/ACg8ocLsMsAKCZPeGzjTJ9z0sOLNdTZG70…"
+isAdmin
+true
+createdAt
+2024-05-18T13:37:59.581+00:00
+updatedAt
+2024-05-18T13:37:59.581+00:00
+__v
+0
+
+-Tengo que modificar los cookies en auth.controller
+
