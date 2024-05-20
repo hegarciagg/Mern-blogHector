@@ -20,7 +20,7 @@ export default function CallToAction() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            100 JavaScript Projects
+            more than 100 ML Projects...
           </a>
         </Button>
       </div>
